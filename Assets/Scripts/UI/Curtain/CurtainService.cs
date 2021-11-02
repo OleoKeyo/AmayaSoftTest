@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using AmayaTest.Infrastructure;
 using AmayaTest.Infrastructure.Factory;
 using AmayaTest.Infrastructure.SceneManagement;
 
@@ -15,17 +14,17 @@ namespace AmayaTest.UI.Curtain
       _gameFactory = gameFactory;
     }
     
-    public void ShowLoadingCurtain()
+    public Task ShowLoadingCurtain()
     {
       if (_loadingCurtain == null)
       {
         _loadingCurtain = _gameFactory.CreateLoadingCurtain();
       }
       
-      _loadingCurtain.Show();
+      return _loadingCurtain.Show();
     }
 
-    public void HideLoadingCurtain() =>
+    public Task HideLoadingCurtain() =>
       _loadingCurtain.Hide();
   }
 }

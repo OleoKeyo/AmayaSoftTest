@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using AmayaTest.Infrastructure.Services;
+using AmayaTest.LevelGeneration;
+using AmayaTest.StaticData.Config;
+using AmayaTest.UI.Curtain;
 
 namespace AmayaTest.Infrastructure.States
 {
@@ -11,7 +14,21 @@ namespace AmayaTest.Infrastructure.States
 
     public GameStateMachine(ServiceContainer services)
     {
-      _states = new Dictionary<Type, IExitableState>();
+      _states = new Dictionary<Type, IExitableState>
+      {
+        [typeof(BootstrapState)] = new BootstrapState(this, services),
+        [typeof(LoadLevelState)] = new LoadLevelState(
+          this,
+          services.Resolve<ILevelGeneratorService>(),
+          services.Resolve<IConfigService>(),
+          services.Resolve<IGameBoardService>()),
+        [typeof(EndGameState)] = new EndGameState(this, services.Resolve<IUIService>()),
+        [typeof(RestartGameState)] = new RestartGameState(
+          this, 
+          services.Resolve<ILevelGeneratorService>(), 
+          services.Resolve<ICurtainService>(), 
+          services.Resolve<IGameBoardService>())
+      };
     }
 
     public void Enter<TState>() where TState : class, IState

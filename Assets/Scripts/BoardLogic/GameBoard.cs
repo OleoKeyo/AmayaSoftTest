@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace AmayaTest.BoardLogic
 {
@@ -21,7 +22,7 @@ namespace AmayaTest.BoardLogic
           Instantiate(card, spawnPosition, Quaternion.identity, transform);
         }
       }
-
+      var eventa = new UnityEvent()
     }
   }
 }

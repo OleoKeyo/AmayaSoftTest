@@ -336,3 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14225adc28364aa8a6012571b47f9855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curtain: {fileID: 0}
+  minCurtainAlpha: 0
+  maxCurtainAlpha: 1
+  fadeAnimationTime: 1

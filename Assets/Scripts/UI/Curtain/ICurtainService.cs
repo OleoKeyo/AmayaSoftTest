@@ -5,7 +5,7 @@ namespace AmayaTest.UI.Curtain
 {
   public interface ICurtainService : IService
   {
-    public void ShowLoadingCurtain();
-    public void HideLoadingCurtain();
+    public Task ShowLoadingCurtain();
+    public Task HideLoadingCurtain();
   }
 }
