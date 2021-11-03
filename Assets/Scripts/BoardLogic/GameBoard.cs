@@ -11,19 +11,19 @@ namespace AmayaTest.BoardLogic
 {
   public class GameBoard : MonoBehaviour
   {
-    [SerializeField] private StartBounceAnimator _startBounceAnimator;
-    [SerializeField] private RightAnswerAnimator _rightAnswerAnimator;
-    [SerializeField] private WrongAnswerAnimator _wrongAnswerAnimator;
-    [SerializeField] private FadeText _currentTargetText;
+    [SerializeField] private StartBounceAnimator startBounceAnimator;
+    [SerializeField] private RightAnswerAnimator rightAnswerAnimator;
+    [SerializeField] private WrongAnswerAnimator wrongAnswerAnimator;
+    [SerializeField] private FadeText currentTargetText;
     
     private Grid _grid;
-    private IGameFactory _gameFactory;
-    private IConfigService _config;
-    private IGameBoardService _gameBoardService;
+    private GameFactory _gameFactory;
+    private ConfigService _config;
+    private GameBoardService _gameBoardService;
     private readonly List<Card> _activeCards = new List<Card>();
     private Vector3[] SpawnPoints => _grid.SpawnPoints;
     
-    public void Construct(IGameFactory gameFactory, IConfigService configService, IGameBoardService gameBoardService)
+    public void Construct(GameFactory gameFactory, ConfigService configService, GameBoardService gameBoardService)
     {
       _gameFactory = gameFactory;
       _config = configService;
@@ -58,10 +58,10 @@ namespace AmayaTest.BoardLogic
     }
 
     public async Task PlayRightAnswerAnimation(Transform cardTransform) =>
-      await _rightAnswerAnimator.Play(cardTransform);
+      await rightAnswerAnimator.Play(cardTransform);
 
     public async Task PlayWrongAnswerAnimation(Transform cardTransform) =>
-      await _wrongAnswerAnimator.Play(cardTransform);
+      await wrongAnswerAnimator.Play(cardTransform);
 
     private void UpdateCard(Card card, CardData data) =>
       card.UpdateCard(data);
@@ -77,15 +77,15 @@ namespace AmayaTest.BoardLogic
     }
 
     private void PlayStartBounceAnimation(Transform cardTransform) =>
-      _startBounceAnimator.Play(cardTransform);
+      startBounceAnimator.Play(cardTransform);
     
     private void SetCurrentTargetText(CardData winner, int difficultLevel)
     {
       string text = $"Find {winner.Description}";
       if (difficultLevel == 1)
-        _currentTargetText.ShowFadedText(text);
+        currentTargetText.ShowFadedText(text);
       else
-        _currentTargetText.ChangeText(text);
+        currentTargetText.ChangeText(text);
     }
   }
 }

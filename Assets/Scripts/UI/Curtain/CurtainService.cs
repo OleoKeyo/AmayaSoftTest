@@ -1,19 +1,18 @@
 ﻿using System.Threading.Tasks;
 using AmayaTest.Infrastructure.Factory;
 using AmayaTest.Infrastructure.SceneManagement;
+using AmayaTest.Infrastructure.Services;
 
 namespace AmayaTest.UI.Curtain
 {
-  public class CurtainService : ICurtainService
+  public class CurtainService : IService
   {
-    private readonly IGameFactory _gameFactory;
+    private readonly GameFactory _gameFactory;
     private LoadingCurtain _loadingCurtain;
 
-    public CurtainService(IGameFactory gameFactory)
-    {
+    public CurtainService(GameFactory gameFactory) =>
       _gameFactory = gameFactory;
-    }
-    
+
     public Task ShowLoadingCurtain()
     {
       if (_loadingCurtain == null)

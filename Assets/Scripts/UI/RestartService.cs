@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AmayaTest.Infrastructure.Factory;
+using AmayaTest.Infrastructure.Services;
 
 namespace AmayaTest.UI
 {
-  public class RestartService : IRestartService
+  public class RestartService : IService
   {
-    private IGameFactory _gameFactory;
+    private readonly GameFactory _gameFactory;
     private RestartUI _restartUI;
 
     public Action OnRestart
@@ -15,7 +16,7 @@ namespace AmayaTest.UI
       set => _restartUI.OnRestart = value;
     }
 
-    public RestartService(IGameFactory gameFactory) =>
+    public RestartService(GameFactory gameFactory) =>
       _gameFactory = gameFactory;
     
     public Task ShowMenu()

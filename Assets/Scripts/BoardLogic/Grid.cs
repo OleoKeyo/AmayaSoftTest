@@ -7,7 +7,7 @@ namespace AmayaTest.BoardLogic
   {
     public Vector3[] SpawnPoints { get; }
 
-    public Grid(IConfigService config)
+    public Grid(ConfigService config)
     {
       int width = config.CardsInLine;
       int height = config.MaxLevel;

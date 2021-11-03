@@ -5,8 +5,8 @@ namespace AmayaTest.StaticData
   [CreateAssetMenu(fileName = "New CardBundleData", menuName = "Card Bundle Data")]
   public class CardBundleData : ScriptableObject
   {
-    [SerializeField] private CardData[] _cardData;
+    [SerializeField] private CardData[] cardData;
     
-    public CardData[] CardData => _cardData;
+    public CardData[] CardData => cardData;
   }
 }

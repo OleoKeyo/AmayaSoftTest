@@ -5,17 +5,17 @@ namespace AmayaTest.Cards
 {
   public class CardRenderer : MonoBehaviour
   {
-    [SerializeField] private SpriteRenderer _symbol;
-    [SerializeField] private SpriteRenderer _background;
+    [SerializeField] private SpriteRenderer symbol;
+    [SerializeField] private SpriteRenderer background;
 
-    public Transform MainImageTransform => _symbol.transform;
+    public Transform MainImageTransform => symbol.transform;
 
     public void Construct(CardData cardData)
     {
       Quaternion rotation = Quaternion.Euler(0, 0, cardData.ZRotation);
-      _symbol.transform.rotation = rotation;
-      _symbol.sprite = cardData.Sprite;
-      _background.color = cardData.Background;
+      symbol.transform.rotation = rotation;
+      symbol.sprite = cardData.Sprite;
+      background.color = cardData.Background;
     }
   }
 }

@@ -21,15 +21,15 @@ namespace AmayaTest.Infrastructure.States
         [typeof(BootstrapState)] = new BootstrapState(this, services),
         [typeof(LoadLevelState)] = new LoadLevelState(
           this,
-          services.Resolve<ILevelGeneratorService>(),
-          services.Resolve<IConfigService>(),
-          services.Resolve<IGameBoardService>()),
-        [typeof(EndGameState)] = new EndGameState(this, services.Resolve<IRestartService>()),
+          services.Resolve<LevelGeneratorService>(),
+          services.Resolve<ConfigService>(),
+          services.Resolve<GameBoardService>()),
+        [typeof(EndGameState)] = new EndGameState(this, services.Resolve<RestartService>()),
         [typeof(RestartGameState)] = new RestartGameState(
           this, 
-          services.Resolve<IConfigService>(), 
-          services.Resolve<ICurtainService>(), 
-          services.Resolve<IGameBoardService>())
+          services.Resolve<ConfigService>(), 
+          services.Resolve<CurtainService>(), 
+          services.Resolve<GameBoardService>())
       };
     }
 

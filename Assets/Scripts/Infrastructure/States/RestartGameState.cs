@@ -7,15 +7,15 @@ namespace AmayaTest.Infrastructure.States
   public class RestartGameState : IState
   {
     private readonly GameStateMachine _stateMachine;
-    private readonly ICurtainService _curtain;
-    private readonly IGameBoardService _gameBoardService;
-    private readonly IConfigService _config;
+    private readonly CurtainService _curtain;
+    private readonly GameBoardService _gameBoardService;
+    private readonly ConfigService _config;
     
     public RestartGameState(
       GameStateMachine stateMachine, 
-      IConfigService config,
-      ICurtainService curtain,
-      IGameBoardService gameBoardService)
+      ConfigService config,
+      CurtainService curtain,
+      GameBoardService gameBoardService)
     {
       _stateMachine = stateMachine;
       _curtain = curtain;
@@ -28,7 +28,7 @@ namespace AmayaTest.Infrastructure.States
       await _curtain.ShowLoadingCurtain();
 
       _gameBoardService.Reset();
-      _stateMachine.Enter<LoadLevelState, int>(_config.FirstLevel);
+      _stateMachine.Enter<LoadLevelState, int>(_config.FirstDifficultLevel);
     }
 
     public void Exit() =>

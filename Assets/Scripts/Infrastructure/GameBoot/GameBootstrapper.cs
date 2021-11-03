@@ -10,8 +10,7 @@ namespace AmayaTest.Infrastructure.GameBoot
 
     private void Awake()
     {
-      _gameStateMachine =
-        new GameStateMachine(new ServiceContainer());
+      _gameStateMachine = new GameStateMachine(new ServiceContainer());
       _gameStateMachine.Enter<BootstrapState>();
       
       DontDestroyOnLoad(this);

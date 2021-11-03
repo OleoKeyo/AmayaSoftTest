@@ -29,18 +29,18 @@ namespace AmayaTest.Infrastructure.States
       _services.RegisterSingle<IGameStateMachine>(_stateMachine);
       _services.RegisterSingle<IAssetProvider>(new AssetProvider());
       _services.RegisterSingle<IRandomService>(new RandomService());
-      _services.RegisterSingle<IConfigService>(new ConfigService());
-      _services.RegisterSingle<ILevelGeneratorService>(new LevelGeneratorService(
-        _services.Resolve<IConfigService>(), 
+      _services.RegisterSingle<ConfigService>(new ConfigService());
+      _services.RegisterSingle<LevelGeneratorService>(new LevelGeneratorService(
+        _services.Resolve<ConfigService>(), 
         _services.Resolve<IRandomService>()));
 
-      _services.RegisterSingle<IGameFactory>(new GameFactory(_services));
-      _services.RegisterSingle<IGameBoardService>(new GameBoardService(
-        _services.Resolve<IGameFactory>(), 
-        _services.Resolve<IConfigService>()));
+      _services.RegisterSingle<GameFactory>(new GameFactory(_services));
+      _services.RegisterSingle<GameBoardService>(new GameBoardService(
+        _services.Resolve<GameFactory>(), 
+        _services.Resolve<ConfigService>()));
       
-      _services.RegisterSingle<IRestartService>(new RestartService(_services.Resolve<IGameFactory>()));
-      _services.RegisterSingle<ICurtainService>(new CurtainService(_services.Resolve<IGameFactory>()));
+      _services.RegisterSingle<RestartService>(new RestartService(_services.Resolve<GameFactory>()));
+      _services.RegisterSingle<CurtainService>(new CurtainService(_services.Resolve<GameFactory>()));
     }
     
     public void Enter()

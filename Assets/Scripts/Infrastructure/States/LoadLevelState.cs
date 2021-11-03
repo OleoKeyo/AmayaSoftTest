@@ -7,17 +7,17 @@ namespace AmayaTest.Infrastructure.States
   public class LoadLevelState : IPayloadedState<int>
   {
     private readonly GameStateMachine _gameStateMachine;
-    private readonly ILevelGeneratorService _levelGeneratorService;
-    private readonly IConfigService _configService;
-    private readonly IGameBoardService _gameBoardService;
+    private readonly LevelGeneratorService _levelGeneratorService;
+    private readonly ConfigService _configService;
+    private readonly GameBoardService _gameBoardService;
 
     private int _difficultLevel;
     
     public LoadLevelState(
       GameStateMachine gameStateMachine,
-      ILevelGeneratorService levelGeneratorService,
-      IConfigService configService,
-      IGameBoardService gameBoardService)
+      LevelGeneratorService levelGeneratorService,
+      ConfigService configService,
+      GameBoardService gameBoardService)
     {
       _gameStateMachine = gameStateMachine;
       _levelGeneratorService = levelGeneratorService;

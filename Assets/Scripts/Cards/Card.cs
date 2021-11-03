@@ -6,25 +6,25 @@ namespace AmayaTest.Cards
 {
   public class Card : MonoBehaviour
   {
-    [SerializeField] private CardRenderer _cardRenderer;
-    [SerializeField] private CardAnswerChecker _cardAnswerChecker;
+    [SerializeField] private CardRenderer cardRenderer;
+    [SerializeField] private CardAnswerChecker cardAnswerChecker;
     
     private string _description;
     public string Description => _description;
 
-    public Transform MainImageTransform => _cardRenderer.MainImageTransform;
+    public Transform MainImageTransform => cardRenderer.MainImageTransform;
 
-    public void Construct(IGameBoardService gameBoardService, CardData cardData)
+    public void Construct(GameBoardService gameBoardService, CardData cardData)
     {
       _description = cardData.Description;
-      _cardRenderer.Construct(cardData);
-      _cardAnswerChecker.Construct(gameBoardService, this);
+      cardRenderer.Construct(cardData);
+      cardAnswerChecker.Construct(gameBoardService, this);
     }
 
     public void UpdateCard(CardData cardData)
     {
       _description = cardData.Description;
-      _cardRenderer.Construct(cardData);
+      cardRenderer.Construct(cardData);
     }
   }
 }

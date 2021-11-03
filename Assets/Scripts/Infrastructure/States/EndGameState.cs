@@ -5,9 +5,9 @@ namespace AmayaTest.Infrastructure.States
   public class EndGameState : IState
   {
     private readonly IGameStateMachine _gameStateMachine;
-    private readonly IRestartService _restartService;
+    private readonly RestartService _restartService;
 
-    public EndGameState(GameStateMachine gameStateMachine, IRestartService restartService)
+    public EndGameState(GameStateMachine gameStateMachine, RestartService restartService)
     {
       _gameStateMachine = gameStateMachine;
       _restartService = restartService;

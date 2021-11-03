@@ -48,10 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd48f244897642bb82981645b2b5fcb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startBounceAnimator: {fileID: 5930818671342677440}
-  _rightAnswerAnimator: {fileID: 5930818671342677443}
-  _wrongAnswerAnimator: {fileID: 5930818671342677442}
-  _currentTargetText: {fileID: 3792895064676321195}
+  startBounceAnimator: {fileID: 5930818671342677440}
+  rightAnswerAnimator: {fileID: 5930818671342677443}
+  wrongAnswerAnimator: {fileID: 5930818671342677442}
+  currentTargetText: {fileID: 3792895064676321195}
 --- !u!114 &5930818671342677440
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 using AmayaTest.Infrastructure.Random;
+using AmayaTest.Infrastructure.Services;
 using AmayaTest.StaticData;
 using AmayaTest.StaticData.Config;
 
 namespace AmayaTest.LevelGeneration
 {
-  public class LevelGeneratorService : ILevelGeneratorService
+  public class LevelGeneratorService : IService
   {
-    private readonly IConfigService _config;
+    private readonly ConfigService _config;
     private readonly IRandomService _random;
-
     private List<CardDealer> _cardDealers;
 
-    public LevelGeneratorService(IConfigService config, IRandomService random)
+    public LevelGeneratorService(ConfigService config, IRandomService random)
     {
       _config = config;
       _random = random;

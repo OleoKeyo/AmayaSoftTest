@@ -2,22 +2,23 @@
 using System.Threading.Tasks;
 using AmayaTest.Cards;
 using AmayaTest.Infrastructure.Factory;
+using AmayaTest.Infrastructure.Services;
 using AmayaTest.LevelGeneration;
 using AmayaTest.StaticData.Config;
 
 namespace AmayaTest.BoardLogic
 {
-  public class GameBoardService : IGameBoardService
+  public class GameBoardService : IService
   {
     public Action OnChoiceRightAnswer { get; set; }
 
-    private readonly IGameFactory _gameFactory;
-    private readonly IConfigService _config;
+    private readonly GameFactory _gameFactory;
+    private readonly ConfigService _config;
     private GameBoard _gameBoard;
     private string _rightAnswer;
     private bool _isReadyForCheck;
 
-    public GameBoardService(IGameFactory gameFactory, IConfigService configService)
+    public GameBoardService(GameFactory gameFactory, ConfigService configService)
     {
       _gameFactory = gameFactory;
       _config = configService;
@@ -37,7 +38,7 @@ namespace AmayaTest.BoardLogic
 
     public async Task CheckCard(Card clickedCard)
     {
-      if(!_isReadyForCheck)
+      if (!_isReadyForCheck)
         return;
       
       if (AnswerIsRight(clickedCard.Description))

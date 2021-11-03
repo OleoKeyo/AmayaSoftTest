@@ -7,7 +7,6 @@ namespace AmayaTest.LevelGeneration
   public class CardDealer
   {
     private readonly IRandomService _random;
-
     private readonly CardSequence _cardSequence;
     private readonly CardSequence _winnerSequence;
 

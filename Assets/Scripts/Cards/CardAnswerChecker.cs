@@ -6,11 +6,11 @@ namespace AmayaTest.Cards
 {
   public class CardAnswerChecker : MonoBehaviour, IPointerClickHandler
   {
-    private IGameBoardService _gameBoardService;
+    private GameBoardService _gameBoardService;
     private Card _card;
     private bool _isClicked;
 
-    public void Construct(IGameBoardService gameBoardService, Card card)
+    public void Construct(GameBoardService gameBoardService, Card card)
     {
       _gameBoardService = gameBoardService;
       _card = card;

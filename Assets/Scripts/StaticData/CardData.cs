@@ -6,14 +6,14 @@ namespace AmayaTest.StaticData
   [Serializable]
   public class CardData
   {
-    [SerializeField] private string _description;
-    [SerializeField] private Sprite _sprite;
-    [SerializeField] private Color _background;
-    [SerializeField] private float _zRotation;
+    [SerializeField] private string description;
+    [SerializeField] private Sprite sprite;
+    [SerializeField] private Color background;
+    [SerializeField] private float zRotation;
 
-    public string Description => _description;
-    public Sprite Sprite => _sprite;
-    public Color Background => _background;
-    public float ZRotation => _zRotation;
+    public string Description => description;
+    public Sprite Sprite => sprite;
+    public Color Background => background;
+    public float ZRotation => zRotation;
   }
 }

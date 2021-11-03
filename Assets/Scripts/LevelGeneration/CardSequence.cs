@@ -7,7 +7,6 @@ namespace AmayaTest.LevelGeneration
   public class CardSequence
   {
     private readonly IRandomService _random;
-
     private readonly CardData[] _sequence;
     private int _lastIndex;
 

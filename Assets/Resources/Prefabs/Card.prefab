@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a2d0e7b9447435e8355b6ec95d52572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _symbol: {fileID: 8018539227369641745}
-  _background: {fileID: 2402324897272806645}
+  symbol: {fileID: 8018539227369641745}
+  background: {fileID: 2402324897272806645}
 --- !u!114 &597020570179389131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,8 +62,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9c9ed6d92740b7b8ff86d579fef1cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardRenderer: {fileID: 2526542831852072317}
-  _cardAnswerChecker: {fileID: -8411520238534330083}
+  cardRenderer: {fileID: 2526542831852072317}
+  cardAnswerChecker: {fileID: -8411520238534330083}
 --- !u!114 &-8411520238534330083
 MonoBehaviour:
   m_ObjectHideFlags: 0
