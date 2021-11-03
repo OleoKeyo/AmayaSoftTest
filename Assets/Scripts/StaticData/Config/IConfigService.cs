@@ -7,5 +7,6 @@ namespace AmayaTest.StaticData.Config
   { 
     Dictionary<string, CardBundleData> Bundles { get;}
     int CardsInLine { get; }
+    int MaxLevel { get; }
   }
 }

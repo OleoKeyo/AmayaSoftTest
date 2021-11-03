@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using AmayaTest.BoardLogic;
 using AmayaTest.Infrastructure.Services;
 using AmayaTest.LevelGeneration;
 using AmayaTest.StaticData.Config;
+using AmayaTest.UI;
 using AmayaTest.UI.Curtain;
 
 namespace AmayaTest.Infrastructure.States

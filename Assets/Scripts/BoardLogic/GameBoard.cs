@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
+using AmayaTest.LevelGeneration;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,6 +9,9 @@ namespace AmayaTest.BoardLogic
 {
   public class GameBoard : MonoBehaviour
   {
+    [SerializeField] private StartBounceAnimator _startBounceAnimator;
+    [SerializeField] private RightAnswerAnimator _rightAnswerAnimator;
+    [SerializeField] private WrongAnswerAnimator _wrongAnswerAnimator;
     public GameObject card;
     private Grid _grid;
 
@@ -19,10 +25,31 @@ namespace AmayaTest.BoardLogic
         for (int x = 0; x < spawnPoints.GetLength(0); x++)
         {
           Vector3 spawnPosition = spawnPoints[x, y];
-          Instantiate(card, spawnPosition, Quaternion.identity, transform);
+          GameObject cardGo = Instantiate(card, spawnPosition, Quaternion.identity, transform);
+          PlayStartBounceAnimation(cardGo.transform);
         }
       }
-      var eventa = new UnityEvent()
+    }
+
+    public async Task Refresh(LevelCardSet cardSet)
+    {
+      
+    }
+
+    public async Task PlayRightAnswerAnimation(Transform cardTransform)
+    {
+      await _rightAnswerAnimator.Play(cardTransform);
+    }
+
+    public void PlayWrongAnswerAnimation(Transform cardTransform) =>
+      _wrongAnswerAnimator.Play(cardTransform);
+
+    private void PlayStartBounceAnimation(Transform cardTransform) =>
+      _startBounceAnimator.Play(cardTransform);
+
+    public void Clear()
+    {
+      
     }
   }
 }

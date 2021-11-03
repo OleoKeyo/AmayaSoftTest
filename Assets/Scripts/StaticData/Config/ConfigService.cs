@@ -9,14 +9,17 @@ namespace AmayaTest.StaticData.Config
 
     private Dictionary<string, CardBundleData> _bundles;
     private int _cardsInLine;
+    private int _maxLevel;
 
     public Dictionary<string, CardBundleData> Bundles => _bundles;
     public int CardsInLine => _cardsInLine;
-
+    public int MaxLevel => _maxLevel;
+    
     public ConfigService()
     {
       GameConfigData config = GetGameConfig();
       _cardsInLine = config.CardsInLine;
+      _maxLevel = config.MaxLevel;
       InitBundles(config);
     }
 
