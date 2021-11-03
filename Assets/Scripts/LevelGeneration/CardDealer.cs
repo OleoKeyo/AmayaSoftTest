@@ -1,21 +1,18 @@
 ﻿using System.Collections.Generic;
 using AmayaTest.Infrastructure.Random;
 using AmayaTest.StaticData;
-using AmayaTest.StaticData.Config;
 
 namespace AmayaTest.LevelGeneration
 {
   public class CardDealer
   {
-    private readonly IConfigService _config;
     private readonly IRandomService _random;
 
     private readonly CardSequence _cardSequence;
     private readonly CardSequence _winnerSequence;
 
-    public CardDealer(IConfigService config, IRandomService random, CardBundleData bundle)
+    public CardDealer(IRandomService random, CardBundleData bundle)
     {
-      _config = config;
       _random = random;
       _cardSequence = new CardSequence(_random, bundle);
       _winnerSequence = new CardSequence(_random, bundle);
@@ -40,8 +37,5 @@ namespace AmayaTest.LevelGeneration
       LevelCardSet levelCardSet = new LevelCardSet(winnerCard, cards);
       return levelCardSet;
     }
-
-    public void Reset() => 
-      _winnerSequence.Reset();
   }
 }

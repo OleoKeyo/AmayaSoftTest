@@ -8,18 +8,31 @@ namespace AmayaTest.StaticData.Config
     private const string ConfigDataPath = "Config/GameConfigData";
 
     private Dictionary<string, CardBundleData> _bundles;
-    private int _cardsInLine;
-    private int _maxLevel;
+    private readonly int _cardsInLine;
+    private readonly int _maxLevel;
+    private readonly int _firstDifficultLevel;
+    private readonly Vector2 _cardSizeInPixels;
+    private readonly Vector2 _spacing;
+    private readonly int _pixelsPerUnit;
 
     public Dictionary<string, CardBundleData> Bundles => _bundles;
     public int CardsInLine => _cardsInLine;
     public int MaxLevel => _maxLevel;
-    
+    public int FirstDifficultLevel => _firstDifficultLevel;
+    public int FirstLevel => FirstDifficultLevel;
+    public Vector2 CardSizeInPixels => _cardSizeInPixels;
+    public Vector2 Spacing => _spacing;
+    public int PixelsPerUnit => _pixelsPerUnit;
+
     public ConfigService()
     {
       GameConfigData config = GetGameConfig();
       _cardsInLine = config.CardsInLine;
       _maxLevel = config.MaxLevel;
+      _firstDifficultLevel = config.FirstDifficultLevel;
+      _cardSizeInPixels = config.CardSizeInPixels;
+      _spacing = config.Spacing;
+      _pixelsPerUnit = config.PixelsPerUnit;
       InitBundles(config);
     }
 
@@ -35,6 +48,5 @@ namespace AmayaTest.StaticData.Config
 
     private GameConfigData GetGameConfig() =>
       Resources.Load<GameConfigData>(ConfigDataPath);
-
   }
 }

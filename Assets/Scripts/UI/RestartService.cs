@@ -8,9 +8,13 @@ namespace AmayaTest.UI
   {
     private IGameFactory _gameFactory;
     private RestartUI _restartUI;
-    
-    public Action OnRestart { get; set; }
-    
+
+    public Action OnRestart
+    {
+      get => _restartUI.OnRestart;
+      set => _restartUI.OnRestart = value;
+    }
+
     public RestartService(IGameFactory gameFactory) =>
       _gameFactory = gameFactory;
     
@@ -24,6 +28,5 @@ namespace AmayaTest.UI
 
     public Task HideMenu() =>
       _restartUI.Hide();
-    
   }
 }

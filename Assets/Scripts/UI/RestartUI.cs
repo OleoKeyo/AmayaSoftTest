@@ -10,23 +10,28 @@ namespace AmayaTest.UI
   {
     [SerializeField] private LoadingCurtain curtain;
     [SerializeField] private Button restartButton;
+    
     public Action OnRestart { get; set; }
+    private bool _isReadyForRestart;
 
-    public Task Show()
+    public async Task Show()
     {
       restartButton.gameObject.SetActive(true);
-      return curtain.Show();
+      await curtain.Show();
+      _isReadyForRestart = true;
     }
     
-    public Task Hide()
+    public Task Hide() => 
+      curtain.Hide();
+    
+    public void OnRestartButtonClick()
     {
-      restartButton.onClick.RemoveAllListeners();
-      return curtain.Hide();
-    }
-
-    private void CloseRestartButton()
-    {
+      if(!_isReadyForRestart)
+        return;
+      
+      OnRestart?.Invoke();
       restartButton.gameObject.SetActive(false);
+      _isReadyForRestart = false;
     }
   }
 }

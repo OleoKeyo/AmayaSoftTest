@@ -1,13 +1,10 @@
-﻿using System;
-using AmayaTest.Infrastructure.SceneManagement;
-using AmayaTest.Infrastructure.Services;
+﻿using AmayaTest.Infrastructure.Services;
 using AmayaTest.Infrastructure.States;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace AmayaTest.Infrastructure.GameBoot
 {
-  public class GameBootstrapper : MonoBehaviour, ICoroutineRunner
+  public class GameBootstrapper : MonoBehaviour
   {
     private GameStateMachine _gameStateMachine;
 

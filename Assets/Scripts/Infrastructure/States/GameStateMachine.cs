@@ -27,7 +27,7 @@ namespace AmayaTest.Infrastructure.States
         [typeof(EndGameState)] = new EndGameState(this, services.Resolve<IRestartService>()),
         [typeof(RestartGameState)] = new RestartGameState(
           this, 
-          services.Resolve<ILevelGeneratorService>(), 
+          services.Resolve<IConfigService>(), 
           services.Resolve<ICurtainService>(), 
           services.Resolve<IGameBoardService>())
       };

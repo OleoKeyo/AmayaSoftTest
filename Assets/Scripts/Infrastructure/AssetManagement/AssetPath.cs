@@ -6,6 +6,5 @@
     public const string GameBoardPath = "Prefabs/GameBoard";
     public const string CurtainPath = "Prefabs/Curtain";
     public const string RestartUIPath = "Prefabs/RestartUI";
-    public const string UIRootPath = "Prefabs/UIRoot";
   }
 }

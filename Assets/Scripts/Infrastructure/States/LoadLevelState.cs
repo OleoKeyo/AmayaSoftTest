@@ -25,11 +25,11 @@ namespace AmayaTest.Infrastructure.States
       _gameBoardService = gameBoardService;
     }
 
-    public async void Enter(int difficultLevel)
+    public void Enter(int difficultLevel)
     {
       _difficultLevel = difficultLevel;
-      var cardSet = _levelGeneratorService.GenerateLevelConfig(_difficultLevel);
-      await _gameBoardService.Refresh(cardSet);
+      LevelCardSet cardSet = _levelGeneratorService.GenerateLevelConfig(_difficultLevel);
+      _gameBoardService.Refresh(cardSet, difficultLevel);
       _gameBoardService.OnChoiceRightAnswer += LoadNextLevel;
     }
 
@@ -41,7 +41,7 @@ namespace AmayaTest.Infrastructure.States
       if(_difficultLevel == _configService.MaxLevel)
         _gameStateMachine.Enter<EndGameState>();
       else
-        _gameStateMachine.Enter<LoadLevelState, int>(_difficultLevel++);
+        _gameStateMachine.Enter<LoadLevelState, int>(_difficultLevel + 1);
     }
   }
 }

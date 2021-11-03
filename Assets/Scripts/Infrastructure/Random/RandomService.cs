@@ -6,7 +6,7 @@
 
     public RandomService() =>
       _random = new System.Random();
-    
+
     public int Next(int maxValue) =>
       _random.Next(maxValue);
 

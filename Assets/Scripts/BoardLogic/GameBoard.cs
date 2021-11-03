@@ -1,12 +1,11 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AmayaTest.Cards;
 using AmayaTest.Infrastructure.Factory;
 using AmayaTest.LevelGeneration;
+using AmayaTest.StaticData;
 using AmayaTest.StaticData.Config;
-using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace AmayaTest.BoardLogic
 {
@@ -15,48 +14,78 @@ namespace AmayaTest.BoardLogic
     [SerializeField] private StartBounceAnimator _startBounceAnimator;
     [SerializeField] private RightAnswerAnimator _rightAnswerAnimator;
     [SerializeField] private WrongAnswerAnimator _wrongAnswerAnimator;
+    [SerializeField] private FadeText _currentTargetText;
     
     private Grid _grid;
     private IGameFactory _gameFactory;
     private IConfigService _config;
+    private IGameBoardService _gameBoardService;
+    private readonly List<Card> _activeCards = new List<Card>();
+    private Vector3[] SpawnPoints => _grid.SpawnPoints;
     
-    public void Construct(IGameFactory gameFactory, IConfigService configService)
+    public void Construct(IGameFactory gameFactory, IConfigService configService, IGameBoardService gameBoardService)
     {
       _gameFactory = gameFactory;
       _config = configService;
+      _gameBoardService = gameBoardService;
+      _grid = new Grid(_config);
     }
     
-
-    public async Task Refresh(LevelCardSet cardSet)
+    public void Refresh(LevelCardSet cardSet, int difficultLevel)
     {
-      _grid = new Grid(4, 4, new Vector2(6, 6));
-      Vector3[,] spawnPoints = _grid.SpawnPoints;
+      SetCurrentTargetText(cardSet.WinnerCard, difficultLevel);
       
-      for (int y = spawnPoints.GetLength(1) - 1; y >= 0; y--)
+      List<CardData> cards = cardSet.Cards;
+      
+      for (int index = 0; index < cards.Count; index++)
       {
-        for (int x = 0; x < spawnPoints.GetLength(0); x++)
-        {
-          Vector3 spawnPosition = spawnPoints[x, y];
-          Card card = _gameFactory.CreateCard(cardSet.Cards[x * y + x], spawnPosition, transform);
-          PlayStartBounceAnimation(card.transform);
-        }
+        CardData cardData = cards[index];
+        Vector3 spawnPosition = SpawnPoints[index];
+        
+        if (index < _activeCards.Count)
+          UpdateCard(_activeCards[index], cardData);
+        else
+          CreateNewCard(cardData, spawnPosition, difficultLevel);
       }
     }
 
-    public async Task PlayRightAnswerAnimation(Transform cardTransform)
+    public void Clear()
     {
-      await _rightAnswerAnimator.Play(cardTransform);
+      foreach (Card activeCard in _activeCards)
+        Destroy(activeCard.gameObject);
+      
+      _activeCards.Clear();
     }
 
-    public void PlayWrongAnswerAnimation(Transform cardTransform) =>
-      _wrongAnswerAnimator.Play(cardTransform);
+    public async Task PlayRightAnswerAnimation(Transform cardTransform) =>
+      await _rightAnswerAnimator.Play(cardTransform);
+
+    public async Task PlayWrongAnswerAnimation(Transform cardTransform) =>
+      await _wrongAnswerAnimator.Play(cardTransform);
+
+    private void UpdateCard(Card card, CardData data) =>
+      card.UpdateCard(data);
+
+    private void CreateNewCard(CardData cardData, Vector3 position, int difficultLevel)
+    {
+      Card card = _gameFactory.CreateCard(position, transform);
+      card.Construct(_gameBoardService, cardData);
+      _activeCards.Add(card);
+      
+      if(difficultLevel == 1)
+        PlayStartBounceAnimation(card.MainImageTransform);
+    }
 
     private void PlayStartBounceAnimation(Transform cardTransform) =>
       _startBounceAnimator.Play(cardTransform);
-
-    public void Clear()
+    
+    private void SetCurrentTargetText(CardData winner, int difficultLevel)
     {
-      
+      string text = $"Find {winner.Description}";
+      if (difficultLevel == 1)
+        _currentTargetText.ShowFadedText(text);
+      else
+        _currentTargetText.ChangeText(text);
     }
   }
 }

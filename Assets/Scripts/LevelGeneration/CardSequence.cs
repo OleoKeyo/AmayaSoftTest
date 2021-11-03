@@ -1,6 +1,6 @@
-﻿using AmayaTest.Infrastructure.Random;
+﻿using System;
+using AmayaTest.Infrastructure.Random;
 using AmayaTest.StaticData;
-using UnityEngine;
 
 namespace AmayaTest.LevelGeneration
 {
@@ -14,7 +14,8 @@ namespace AmayaTest.LevelGeneration
     public CardSequence(IRandomService random, CardBundleData bundle)
     {
       _random = random;
-      _sequence = bundle.CardData;
+      _sequence = new CardData[bundle.CardData.Length];
+      Array.Copy(bundle.CardData, _sequence, bundle.CardData.Length);
     }
 
     public CardData GetCard()

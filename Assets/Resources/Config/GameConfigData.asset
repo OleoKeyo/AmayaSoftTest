@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardsInLine: 3
   _maxLevel: 3
+  _firstDifficultLevel: 1
+  _cardSizeInPixels: {x: 512, y: 512}
+  _spacing: {x: 100, y: 100}
+  _pixelsPerUnit: 100
   _bundles:
-  - {fileID: 11400000, guid: a814e18dc819a674e977b61966073f80, type: 2}
   - {fileID: 11400000, guid: 9c09cc2944a62fa49b50efbd04b4be78, type: 2}
+  - {fileID: 11400000, guid: a814e18dc819a674e977b61966073f80, type: 2}

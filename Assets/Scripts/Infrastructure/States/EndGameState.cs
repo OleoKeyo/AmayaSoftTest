@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using AmayaTest.UI;
+﻿using AmayaTest.UI;
 
 namespace AmayaTest.Infrastructure.States
 {
@@ -23,10 +22,10 @@ namespace AmayaTest.Infrastructure.States
     private async void RestartGame()
     {
       await _restartService.HideMenu();
+      _restartService.OnRestart -= RestartGame;
       _gameStateMachine.Enter<RestartGameState>();
     }
-
-
+    
     public void Exit() { }
   }
 }

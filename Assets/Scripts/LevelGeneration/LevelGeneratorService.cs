@@ -25,7 +25,7 @@ namespace AmayaTest.LevelGeneration
       _cardDealers = new List<CardDealer>();
       
       foreach (KeyValuePair<string, CardBundleData> cardBundlePair in _config.Bundles)
-        _cardDealers.Add(new CardDealer(_config, _random, cardBundlePair.Value));
+        _cardDealers.Add(new CardDealer(_random, cardBundlePair.Value));
     }
 
     public LevelCardSet GenerateLevelConfig(int difficultLevel)
@@ -33,12 +33,6 @@ namespace AmayaTest.LevelGeneration
       int randomBundle = _random.Next(_cardDealers.Count);
       int cardsCount = difficultLevel * _config.CardsInLine;
       return _cardDealers[randomBundle].CreateCardSet(cardsCount);
-    }
-
-    public void Reset()
-    {
-      foreach (CardDealer cardDealer in _cardDealers)
-        cardDealer.Reset();
     }
   }
 }

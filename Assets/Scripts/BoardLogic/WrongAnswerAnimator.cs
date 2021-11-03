@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
 
 namespace AmayaTest.BoardLogic
@@ -6,13 +7,16 @@ namespace AmayaTest.BoardLogic
   public class WrongAnswerAnimator : MonoBehaviour
   {
     [SerializeField] private float animationTimeInSeconds = 1f;
-    [SerializeField] private Vector3 punchPositionStrength = new Vector3(10f, 0f, 0f);
+    [SerializeField] private Vector3 punchPositionStrength = new Vector3(1f, 0f, 0f);
+    private Tween _wrongAnswerTween;
 
-    public void Play(Transform cardTransform)
+    public async Task Play(Transform cardTransform)
     {
-      cardTransform
-        .DOPunchScale(punchPositionStrength, animationTimeInSeconds, 0)
+      _wrongAnswerTween = cardTransform
+        .DOShakeScale(animationTimeInSeconds, punchPositionStrength)
         .SetEase(Ease.InBounce);
+      
+      await _wrongAnswerTween.AsyncWaitForCompletion();
     }
   }
 }

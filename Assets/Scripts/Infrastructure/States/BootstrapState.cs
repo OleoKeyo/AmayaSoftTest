@@ -35,19 +35,19 @@ namespace AmayaTest.Infrastructure.States
         _services.Resolve<IRandomService>()));
 
       _services.RegisterSingle<IGameFactory>(new GameFactory(_services));
-      _services.RegisterSingle<IGameBoardService>(new GameBoardService(_services.Resolve<IGameFactory>()));
+      _services.RegisterSingle<IGameBoardService>(new GameBoardService(
+        _services.Resolve<IGameFactory>(), 
+        _services.Resolve<IConfigService>()));
+      
       _services.RegisterSingle<IRestartService>(new RestartService(_services.Resolve<IGameFactory>()));
       _services.RegisterSingle<ICurtainService>(new CurtainService(_services.Resolve<IGameFactory>()));
     }
-
-    public void Exit()
+    
+    public void Enter()
     {
       _stateMachine.Enter<LoadLevelState, int>(FirstDifficultLevel);
     }
 
-    public void Enter()
-    {
-      
-    }
+    public void Exit() { }
   }
 }
