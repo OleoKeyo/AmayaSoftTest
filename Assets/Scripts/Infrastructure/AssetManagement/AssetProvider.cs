@@ -15,5 +15,11 @@ namespace AmayaTest.Infrastructure.AssetManagement
       GameObject prefab = Resources.Load<GameObject>(path);
       return Object.Instantiate(prefab, parent);
     }
+
+    public GameObject Instantiate(string path, Vector3 position, Quaternion rotation, Transform parent)
+    {
+      GameObject prefab = Resources.Load<GameObject>(path);
+      return Object.Instantiate(prefab, position, rotation, parent);
+    }
   }
 }

@@ -10,6 +10,8 @@ namespace AmayaTest.Cards
 
     public void Construct(CardData cardData)
     {
+      Quaternion rotation = Quaternion.Euler(0, 0, cardData.ZRotation);
+      _symbol.transform.rotation = rotation;
     }
   }
 }

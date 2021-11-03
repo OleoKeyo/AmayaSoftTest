@@ -9,11 +9,11 @@ namespace AmayaTest.StaticData
     [SerializeField] private string _description;
     [SerializeField] private Sprite _sprite;
     [SerializeField] private Color _background;
-    [SerializeField] private bool _isNeededToRotate;
+    [SerializeField] private float _zRotation;
 
     public string Description => _description;
     public Sprite Sprite => _sprite;
     public Color Background => _background;
-    public bool IsNeededToRotate => _isNeededToRotate;
+    public float ZRotation => _zRotation;
   }
 }

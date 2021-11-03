@@ -9,5 +9,6 @@ namespace AmayaTest.BoardLogic
   {
     Action OnChoiceRightAnswer { get; set; }
     Task Refresh(LevelCardSet cardSet);
+    void Reset();
   }
 }

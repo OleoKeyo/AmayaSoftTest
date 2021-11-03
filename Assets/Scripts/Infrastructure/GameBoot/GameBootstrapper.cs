@@ -9,8 +9,6 @@ namespace AmayaTest.Infrastructure.GameBoot
 {
   public class GameBootstrapper : MonoBehaviour, ICoroutineRunner
   {
-    [SerializeField] private LoadingCurtain _curtainPrefab;
-
     private GameStateMachine _gameStateMachine;
 
     private void Awake()

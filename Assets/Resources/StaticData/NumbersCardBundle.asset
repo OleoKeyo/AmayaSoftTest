@@ -16,40 +16,40 @@ MonoBehaviour:
   - _description: 1
     _sprite: {fileID: 1422184923334757970, guid: e5d62374b3f3a77409e41dc261dc93f9, type: 3}
     _background: {r: 0.9607843, g: 0.72156864, b: 0.93333334, a: 1}
-    _isNeededToRotate: 0
+    _zRotation: 0
   - _description: 2
     _sprite: {fileID: 1808195818850983521, guid: e5d62374b3f3a77409e41dc261dc93f9, type: 3}
     _background: {r: 0.99215686, g: 0.67058825, b: 0.70980394, a: 1}
-    _isNeededToRotate: 0
+    _zRotation: 0
   - _description: 3
     _sprite: {fileID: -7900951133411543555, guid: e5d62374b3f3a77409e41dc261dc93f9, type: 3}
     _background: {r: 0.9607843, g: 0.76862746, b: 0.36862746, a: 1}
-    _isNeededToRotate: 0
+    _zRotation: 0
   - _description: 4
     _sprite: {fileID: 2267071060405275165, guid: e5d62374b3f3a77409e41dc261dc93f9, type: 3}
     _background: {r: 0.93333334, g: 0.8980392, b: 0.65882355, a: 1}
-    _isNeededToRotate: 0
+    _zRotation: 0
   - _description: 5
     _sprite: {fileID: -7398325283844340781, guid: e5d62374b3f3a77409e41dc261dc93f9, type: 3}
     _background: {r: 0.93333334, g: 0.69411767, b: 0.42745098, a: 1}
-    _isNeededToRotate: 0
+    _zRotation: 0
   - _description: 6
     _sprite: {fileID: -7015292045520539579, guid: e5d62374b3f3a77409e41dc261dc93f9, type: 3}
     _background: {r: 0.79607844, g: 0.7058824, b: 1, a: 1}
-    _isNeededToRotate: 0
+    _zRotation: 0
   - _description: 7
     _sprite: {fileID: -675344402919758444, guid: e5d62374b3f3a77409e41dc261dc93f9, type: 3}
     _background: {r: 0.99215686, g: 0.67058825, b: 0.70980394, a: 1}
-    _isNeededToRotate: 1
+    _zRotation: -90
   - _description: 8
     _sprite: {fileID: 3547489320769246608, guid: e5d62374b3f3a77409e41dc261dc93f9, type: 3}
     _background: {r: 0.79607844, g: 0.7058824, b: 1, a: 1}
-    _isNeededToRotate: 1
+    _zRotation: -90
   - _description: 9
     _sprite: {fileID: -1155199509967091035, guid: e008edaa654acb3468557612b4736eb9, type: 3}
     _background: {r: 0.9607843, g: 0.76862746, b: 0.36862746, a: 1}
-    _isNeededToRotate: 0
+    _zRotation: 0
   - _description: 10
     _sprite: {fileID: 4142021021139464533, guid: c7373110fec150f42a6d017d12e192a2, type: 3}
     _background: {r: 0.9607843, g: 0.72156864, b: 0.93333334, a: 1}
-    _isNeededToRotate: 0
+    _zRotation: 0

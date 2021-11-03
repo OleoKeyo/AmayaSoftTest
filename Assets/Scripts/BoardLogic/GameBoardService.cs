@@ -43,7 +43,7 @@ namespace AmayaTest.BoardLogic
       }
     }
 
-    public void ResetGameBoard()
+    public void Reset()
     {
       _gameBoard.Clear();
       ResetRightAnswer();
